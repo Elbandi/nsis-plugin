@@ -1,0 +1,19 @@
+<j:jelly xmlns:j="jelly:core" xmlns:st="jelly:stapler" xmlns:d="jelly:define" xmlns:l="/lib/layout"
+         xmlns:t="/lib/hudson" xmlns:f="/lib/form">
+
+    <f:entry title="NSIS Version">
+        <select class="setting-input" name="NsisBuilder.nsisInstallationName">
+            <option>(Default)</option>
+            <j:forEach var="inst" items="${descriptor.installations}">
+                <f:option selected="${inst.name==instance.nsisInstallationName}">${inst.name}</f:option>
+            </j:forEach>
+        </select>
+    </f:entry>
+
+    <f:entry title="NSIS script File" help="/plugin/nsis/help-nsisFile.html" field="NsisFile">
+        <f:textbox name="NsisBuilder.nsisFile" value="${instance.nsisFile}"/>
+    </f:entry>
+    <f:entry title="Command Line Arguments" help="/plugin/nsis/help-CmdLineArgs.html">
+        <f:textbox name="NsisBuilder.cmdLineArgs" value="${instance.cmdLineArgs}"/>
+    </f:entry>
+</j:jelly>
